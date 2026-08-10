@@ -130,11 +130,35 @@ def render_requirements_module():
                 st.markdown("---")
                 st.markdown("**✅ Critérios de Aceite (BDD):**")
                 
-                # Trata a quebra de linha nos critérios de aceite
+                # Trata as quebras de linha e formatação do BDD em negrito por linha
                 crit = us.get('acceptance_criteria', 'Sem critérios.')
-                if isinstance(crit, str):
-                    formatted_crit = crit.replace(" e dado que", "\n* **E dado que**").replace("; e dado que", "\n* **E dado que**").replace("Dado que", "* **Dado que**").replace("quando", "\n* **Quando**").replace(", quando", "\n* **Quando**").replace("então", "\n* **Então**").replace(", então", "\n* **Então**")
-                    st.markdown(formatted_crit)
+                if isinstance(crit, str) and crit.strip():
+                    formatted = crit
+                    
+                    # 1. Garante quebras de linha antes de cada palavra-chave BDD
+                    keywords = [
+                        ("Dado que ", "\n\n**Dado que** "),
+                        ("dado que ", "\n\n**Dado que** "),
+                        (" Quando ", "\n**Quando** "),
+                        (" quando ", "\n**Quando** "),
+                        (" Então ", "\n**Então** "),
+                        (" então ", "\n**Então** "),
+                        (" E ", "\n**E** "),
+                        (" e ", "\n**E** ")
+                    ]
+                    
+                    for old, new in keywords:
+                        formatted = formatted.replace(old, new)
+                    
+                    # 2. Garante formatação inicial se começar direto com Dado que/Quando/Então sem espaço
+                    if formatted.startswith("Dado que"):
+                        formatted = formatted.replace("Dado que", "**Dado que**", 1)
+                    elif formatted.startswith("Quando"):
+                        formatted = formatted.replace("Quando", "**Quando**", 1)
+                    elif formatted.startswith("Então"):
+                        formatted = formatted.replace("Então", "**Então**", 1)
+
+                    st.markdown(formatted.strip())
                 else:
                     st.write(crit)
 
