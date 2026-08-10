@@ -334,7 +334,7 @@ ISTQB_SCHEMAS = {
 
     "user_story": """
     REGRAS DE RESPOSTA (ISTQB / AGILE):
-    Analise OBRIGATORIAMENTE o CONTEXTO INFORMADO. Extraia a persona e a funcionalidade EXCLUSIVAMENTE das informações fornecidas. NÃO invente temas que não pertençam ao contexto do usuário.
+    Analise OBRIGATORIAMENTE o CONTEXTO INFORMADO. Extraia a persona e a funcionalidade EXCLUSIVAMENTE das informações fornecidas.
 
     Responda EXCLUSIVAMENTE com um JSON estrito no formato:
     {
@@ -349,12 +349,13 @@ ISTQB_SCHEMAS = {
         "as_a": "Papel ou tipo de usuário extraído do contexto",
         "i_want_to": "Ação específica que o usuário deseja realizar conforme o contexto",
         "so_that": "Benefício ou valor gerado por essa ação",
-        "acceptance_criteria": "Cenários de teste no formato BDD cobrindo o fluxo principal e exceções do contexto:\\n\\nDado que <pré-condição>\\nQuando <ação realizada pelo usuário>\\nEntão <resultado esperado pelo sistema>\\n\\nDado que <cenário alternativo ou exceção>\\nQuando <ação realizada>\\nEntão <resultado esperado>"
+        "acceptance_criteria": "Dado que <pré-condição>\\nQuando <ação realizada pelo usuário>\\nEntão <resultado esperado>\\n\\nDado que <cenário alternativo>\\nQuando <ação realizada>\\nEntão <resultado esperado>"
       }
     }
     
-    ATENÇÃO AOS CAMPOS FORMATADOS:
-    - Nos campos 'as_a', 'i_want_to' e 'so_that', NÃO inclua as palavras 'Como um', 'Eu quero' ou 'Para que'. Digite apenas o complemento.
+    ATENÇÃO OBRIGATÓRIA A FORMATAÇÃO DOS CRITÉRIOS DE ACEITE:
+    - Nos critérios de aceite (acceptance_criteria), OBRIGATORIAMENTE insira quebra de linha (\\n) entre 'Dado que', 'Quando' e 'Então'. NUNCA escreva o cenário BDD na mesma linha.
+    - Nos campos 'as_a', 'i_want_to' e 'so_that', NÃO inclua os prefixos 'Como um', 'Eu quero' ou 'Para que'. Digite apenas o texto complementar.
     """
 }
 
