@@ -299,74 +299,87 @@ def parse_ai_json(raw_text: str) -> Optional[Union[Dict[str, Any], list]]:
     except Exception as e:
         st.error(f"⚠️ Erro ao converter resposta da IA em JSON válido: {e}")
         return None
+# ------------------------------------------------------------------------------
+# SCHEMAS ISTQB DE QUALIDADE (GENÉRICOS E DINÂMICOS)
+# ------------------------------------------------------------------------------
 
-
-# SCHEMAS ISTQB DE QUALIDADE
 ISTQB_SCHEMAS = {
     "test_case": """
     REGRAS DE RESPOSTA (ISTQB):
-    Responda EXCLUSIVAMENTE com um JSON estrito contendo:
+    Analise o CONTEXTO INFORMADO e crie um Caso de Teste diretamente relacionado a ele.
+    Responda EXCLUSIVAMENTE com um JSON estrito no formato:
     {
-      "title": "Título objetivo e direto",
-      "type": "Funcional | Regressão | Smoke",
-      "preconditions": "Pré-condições necessárias para o teste",
-      "test_data": "Dados de entrada necessários",
-      "steps": "1. Passo um\\n2. Passo dois",
-      "expected_result": "Comportamento esperado do sistema"
+      "title": "Título objetivo e direto cobrindo o contexto",
+      "type": "Funcional | Regressão | Smoke | Não-Funcional",
+      "preconditions": "Pré-condições necessárias baseadas no contexto",
+      "test_data": "Dados de entrada necessários para executar este teste",
+      "steps": "1. Primeiro passo\\n2. Segundo passo\\n3. Terceiro passo",
+      "expected_result": "Comportamento exato esperado do sistema"
     }
     """,
+
     "bug_report": """
     REGRAS DE RESPOSTA (ISTQB / IEEE 829):
-    Responda EXCLUSIVAMENTE com um JSON estrito contendo:
+    Analise o CONTEXTO INFORMADO e crie um Relatório de Bug condizente com a falha relatada.
+    Responda EXCLUSIVAMENTE com um JSON estrito no formato:
     {
-      "title": "[Módulo] Resumo do problema",
+      "title": "[Módulo/Funcionalidade] Resumo claro da falha",
       "severity": "Baixa | Média | Alta | Crítica",
-      "environment": "Ambiente onde ocorreu o defeito",
-      "steps_to_reproduce": "1. Passo um\\n2. Passo dois",
-      "expected_behavior": "Comportamento correto esperado",
+      "environment": "Ambiente afetado (ex: Staging, Produção, Web, Mobile)",
+      "steps_to_reproduce": "1. Passo um\\n2. Passo dois\\n3. Passo três",
+      "expected_behavior": "Comportamento correto que o sistema deveria ter",
       "actual_behavior": "Comportamento incorreto observado"
     }
     """,
+
     "user_story": """
-    REGRAS DE RESPOSTA (ISTQB):
-    Responda EXCLUSIVAMENTE com um JSON estrito contendo:
+    REGRAS DE RESPOSTA (ISTQB / AGILE):
+    Analise OBRIGATORIAMENTE o CONTEXTO INFORMADO. Extraia a persona e a funcionalidade EXCLUSIVAMENTE das informações fornecidas. NÃO invente temas que não pertençam ao contexto do usuário.
+
+    Responda EXCLUSIVAMENTE com um JSON estrito no formato:
     {
       "persona": {
-        "name": "Nome da persona",
-        "role": "Papel/Cargo no sistema",
-        "goals": "Objetivo principal resumido",
-        "pain_points": "Frustração ou dor principal"
+        "name": "Nome fictício para a persona adequada ao contexto",
+        "role": "Papel/Cargo no sistema identificado no contexto",
+        "goals": "Objetivo principal desta persona dentro do contexto",
+        "pain_points": "Dor ou frustração principal que esta funcionalidade resolve"
       },
       "user_story": {
-        "title": "Título resumido da funcionalidade",
-        "as_a": "Apenas a persona/papel (Ex: Compradora online)",
-        "i_want_to": "Apenas a ação desejada (Ex: Efetuar pagamento via chave Pix cadastrada)",
-        "so_that": "Apenas o benefício (Ex: Concluir a compra rapidamente sem digitar dados)",
-        "acceptance_criteria": "Dado que a chave Pix está cadastrada...\\nQuando eu selecionar a opção Pix...\\nEntão o pagamento é processado.\\n\\nDado que a chave não está cadastrada...\\nQuando acessar o checkout...\\nEntão a opção Pix não é exibida."
+        "title": "Título resumido da funcionalidade extraída do contexto",
+        "as_a": "Papel ou tipo de usuário extraído do contexto",
+        "i_want_to": "Ação específica que o usuário deseja realizar conforme o contexto",
+        "so_that": "Benefício ou valor gerado por essa ação",
+        "acceptance_criteria": "Cenários de teste no formato BDD cobrindo o fluxo principal e exceções do contexto:\\n\\nDado que <pré-condição>\\nQuando <ação realizada pelo usuário>\\nEntão <resultado esperado pelo sistema>\\n\\nDado que <cenário alternativo ou exceção>\\nQuando <ação realizada>\\nEntão <resultado esperado>"
       }
     }
-    ATENÇÃO: Nos campos 'as_a', 'i_want_to' e 'so_that', NÃO inclua os prefixos 'Como um', 'Eu quero' ou 'Para que'. Escreva apenas o texto complementar.
+    
+    ATENÇÃO AOS CAMPOS FORMATADOS:
+    - Nos campos 'as_a', 'i_want_to' e 'so_that', NÃO inclua as palavras 'Como um', 'Eu quero' ou 'Para que'. Digite apenas o complemento.
     """
 }
-
 
 def generate_istqb_content(entity_type: str, user_context: str) -> Optional[Union[Dict[str, Any], list]]:
     """
     Função genérica para criar documentos de QA (test_case, bug_report ou user_story)
-    seguindo rigorosamente os padrões ISTQB.
+    seguindo rigorosamente os padrões ISTQB para QUALQUER tipo de sistema ou contexto.
     """
     schema_instruction = ISTQB_SCHEMAS.get(entity_type, "")
     
     full_prompt = f"""
-    Você é um Engenheiro de Qualidade de Software (QA) Especialista certificado pelo ISTQB.
-    Analise o contexto fornecido e atenda ao pedido seguindo rigorosamente os padrões de QA.
+    Você é um Engenheiro de Qualidade de Software (QA) Especialista e certificado ISTQB.
+    Sua tarefa é analisar o contexto abaixo e gerar uma documentação técnica e precisa de QA.
 
-    CONTEXTO INFORMADO:
+    ========================================
+    CONTEXTO DO SISTEMA INFORMADO PELO USUÁRIO:
     {user_context}
+    ========================================
 
+    INSTRUÇÕES DO SCHEMA:
     {schema_instruction}
     
-    ATENÇÃO: Retorne APENAS o JSON. Não inclua conversas, saudações ou explicações fora do JSON.
+    DIRETRIZES FINAIS OBRIGATÓRIAS:
+    1. Baseie a resposta 100% no CONTEXTO DO SISTEMA fornecido acima. Ignore qualquer outro assunto.
+    2. Retorne APENAS o JSON válido. Não inclua marcações extras de texto fora do JSON, saudações nem explicações.
     """
     
     raw_response = generate_ai_content(full_prompt)
