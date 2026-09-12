@@ -1,0 +1,100 @@
+PROPRIETARY AND CONFIDENTIAL SOFTWARE LICENSE
+COPYRIGHT (C) 2026 qadtester. ALL RIGHTS RESERVED.
+
+===============================================================================
+ENGLISH VERSION (OFFICIAL)
+===============================================================================
+
+1. INTELLECTUAL PROPERTY AND SCOPE
+The software "QA & Requisitos Hub (qaboard)", including, without limitation, its 
+source code, software architecture, business logic, user interfaces, artificial 
+intelligence system prompts, data schemas, documentation, and associated 
+artifacts ("Software"), is the exclusive and confidential property of qadtester.
+
+2. RESTRICTIONS ON USE, COPYING, AND DISTRIBUTION
+Any individual, corporation, or legal entity is expressly PROHIBITED, without the 
+prior, express, and formal written authorization of the copyright holder, from:
+a) Copying, cloning, reproducing, duplicating, or redistributing this Software or 
+   any of its parts, in whole or in modified form;
+b) Using the Software, its source code, or derivatives for commercial purposes, 
+   rendering services to third parties, or providing it as Software as a Service (SaaS);
+c) Creating derivative works, adapting, translating, decompiling, reverse 
+   engineering, or attempting to extract the underlying logic of the Software;
+d) Sublicensing, renting, selling, transferring, or assigning by any title the 
+   rights to the Software.
+
+Making the source code publicly accessible on GitHub is intended strictly for 
+documentary and historical technical proof purposes, and does NOT constitute a 
+waiver of proprietary rights, nor the grant of any public license for use, 
+modification, or redistribution.
+
+3. EXPRESS EXCLUSION OF THIRD-PARTY OPEN SOURCE LIBRARIES AND COMPONENTS
+It is expressly clarified that the terms of this proprietary license do NOT 
+apply to third-party open-source libraries, frameworks, packages, utilities, 
+and dependencies used or referenced by the project (such as, by way of example: 
+Python, Streamlit, Supabase Client, Pandas, Plotly, Tabulate, Groq SDK, Google 
+Generative AI SDK, OpenAI SDK, python-dotenv, among others).
+
+Such third-party components remain entirely governed and protected by their 
+respective original free and open-source licenses (such as MIT, Apache 2.0, BSD, 
+and compatible licenses), which are fully acknowledged and respected. Their use 
+remains free within the boundaries stipulated by their rightful owners.
+
+4. DISCLAIMER OF WARRANTIES
+The Software is provided "AS IS", without warranty of any kind, express or 
+implied, including but not limited to the warranties of merchantability, fitness 
+for a particular purpose, and non-infringement. In no event shall the copyright 
+holder be liable for any direct, indirect, incidental, or consequential damages 
+arising out of the viewing or unauthorized use of this Software.
+
+
+===============================================================================
+VERSÃO EM PORTUGUÊS (PORTUGUESE VERSION)
+===============================================================================
+
+1. PROPRIEDADE INTELECTUAL E ESCOPO
+O software "QA & Requisitos Hub (qaboard)", incluindo, mas não se limitando ao 
+seu código-fonte, arquitetura de software, lógica de negócios, interfaces de 
+usuário, prompts de sistema para inteligência artificial, esquemas de dados, 
+documentação e artefatos associados ("Software"), é de propriedade exclusiva e 
+confidencial de qadtester.
+
+2. RESTRIÇÕES DE USO, CÓPIA E DISTRIBUIÇÃO
+É expressamente PROIBIDO a qualquer indivíduo, empresa ou entidade, sem 
+autorização prévia, expressa e formal por escrito do titular dos direitos:
+a) Copiar, clonar, reproduzir, duplicar ou redistribuir este Software ou qualquer 
+   uma de suas partes, no todo ou em modificação;
+b) Utilizar o Software, seu código-fonte ou derivados para fins comerciais, 
+   prestação de serviços a terceiros ou disponibilização como Software como 
+   Serviço (SaaS);
+c) Criar obras derivadas, adaptar, traduzir, descompilar, realizar engenharia 
+   reversa ou tentar extrair a lógica subjacente do Software;
+d) Sublicenciar, alugar, vender, transferir ou ceder a qualquer título os 
+   direitos sobre o Software.
+
+A disponibilização do código-fonte em repositório público no GitHub possui 
+finalidade estritamente documental e comprobatória de histórico técnico, NÃO 
+constituindo renúncia a direitos patrimoniais, nem outorga de licença pública 
+de uso, modificação ou redistribuição.
+
+3. EXCLUSÃO EXPRESSA DE COMPONENTES E BIBLIOTECAS DE TERCEIROS (OPEN SOURCE)
+Fica expressamente esclarecido que os termos desta licença proprietária NÃO se 
+aplicam às bibliotecas, frameworks, pacotes, utilitários e dependências de 
+terceiros de código aberto (Open Source) utilizados ou referenciados pelo 
+projeto (tais como, exemplificativamente: Python, Streamlit, Supabase Client, 
+Pandas, Plotly, Tabulate, Groq SDK, Google Generative AI SDK, OpenAI SDK, 
+python-dotenv, entre outros).
+
+Tais componentes de terceiros permanecem integralmente regidos e protegidos por 
+suas respectivas licenças de software livre e de código aberto originais (tais 
+como licenças MIT, Apache 2.0, BSD e compatíveis), as quais são reconhecidas e 
+respeitadas em sua totalidade, permanecendo o seu uso livre dentro dos limites 
+estipulados por seus legítimos detentores.
+
+4. ISENÇÃO DE GARANTIAS
+O Software é disponibilizado "NO ESTADO EM QUE SE ENCONTRA" ("AS IS"), sem 
+qualquer tipo de garantia, expressa ou implícita, incluindo garantias de 
+comercialização, adequação a uma finalidade específica ou não violação. Em 
+nenhuma circunstância o titular será responsável por quaisquer danos diretos, 
+indiretos, incidentais ou consequenciais decorrentes da visualização ou do uso 
+não autorizado deste Software.
